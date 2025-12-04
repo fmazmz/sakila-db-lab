@@ -1,0 +1,12 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-sakila
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: sakila
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./sakila-db/sakila-schema.sql:/docker-entrypoint-initdb.d/1.sql
+      - ./sakila-db/sakila-data.sql:/docker-entrypoint-initdb.d/2.sql
